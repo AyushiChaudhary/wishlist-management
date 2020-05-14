@@ -19,11 +19,8 @@ import com.capgemini.go.dto.Wishlist;
 		@Modifying
 	    @Transactional
 		@Query("DELETE  FROM Wishlist w WHERE w.productId =:product_id   and w.userId=:user_id")
-		void delteWishlistByUserIdAndProductId(@Param("user_id")String user_id,@Param("product_id")String product_id);
-		@Modifying
-	    @Transactional
-		@Query("DELETE  FROM Wishlist w WHERE   w.userId=:user_id")
-		void deleteAllWishlistByUserId(@Param("user_id")String user_id);
+		void deleteWishlistByUserIdAndProductId(@Param("user_id")String user_id,@Param("product_id")String product_id);
+
 
 	}
 

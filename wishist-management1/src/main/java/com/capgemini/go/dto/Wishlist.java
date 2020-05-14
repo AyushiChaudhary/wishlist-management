@@ -6,9 +6,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 //mark class as an Entity 
+
 	@Entity
-	//defining class name as Table name
+	
+//defining class name as Table name
+	
 	@Table(name="wishlist")
 
 public class Wishlist {

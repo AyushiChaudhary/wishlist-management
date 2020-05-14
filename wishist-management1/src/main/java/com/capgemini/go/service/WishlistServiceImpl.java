@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.go.dto.Wishlist;
+import com.capgemini.go.exception.ProductException;
 import com.capgemini.go.repository.WishlistRepository;
 
 
@@ -13,37 +14,41 @@ import com.capgemini.go.repository.WishlistRepository;
 
 		@Autowired
 		  WishlistRepository wishlistRepository;
+		
 
+		
+		/* 
+		 * this method is created for getting the products wishlisted by user 
+		 */
+		
 		@Override
-		public List<Wishlist> getWishlist(String userId) 
+		public List<Wishlist> getWishlist(String userId)
 		{
 		return wishlistRepository.findAllByUserId(userId);
 		}
 
 
+		/*
+		 * this method is created for adding the products into the wishist 
+		 */
 
 		@Override
-		public Wishlist addToWishlist(Wishlist wishlist ) 
-		{
+		public Wishlist addToWishlist(Wishlist wishlist ) {
+			
 		      wishlist=wishlistRepository.save(wishlist);
 		      return wishlist;
 		}
 		
 
 
-		@Override
-		public void deleteAll(String userId) {
-			
-			wishlistRepository.deleteAllWishlistByUserId(userId);
-			
-		}
-
-
-
+        /* 
+         * this method is created for deleting the particular product from the wishlist of the user
+         */
+		
 		@Override
 		public void delete(String productId, String userId) {
 			
-			wishlistRepository.delteWishlistByUserIdAndProductId(userId, productId);
+			wishlistRepository.deleteWishlistByUserIdAndProductId(userId, productId);
 		}
 		
 
